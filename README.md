@@ -35,7 +35,7 @@ git clone https://github.com/prajwal9773/API_RATE_LIMITER.git
 cd API_RATE_LIMITER
 
 # Install dependencies
-npm install<img width="1676" alt="Screenshot 2025-06-06 at 5 21 29 PM" src="https://github.com/user-attachments/assets/f9c05401-2d85-4480-9871-f27b631e6361" />
+npm install
 
 
 # Start Redis server if not already running
@@ -45,4 +45,54 @@ redis-server
 npm run dev
 
 📡 API Endpoints
+
+
+```
+| Method | Endpoint                 | Description                        |
+| ------ | ------------------------ | ---------------------------------- |
+| GET    | `/health`                | Health check                       |
+| GET    | `/api/test`              | Basic test endpoint (rate limited) |
+| POST   | `/api/test`              | POST variant (rate limited)        |
+| GET    | `/api/rate-limit/status` | Check current rate limit status    |
+| GET    | `/api/heavy`             | Endpoint with stricter limits      |
+
+
+
+📘 Swagger Documentation
+
+Swagger UI available at:
+
+GET /api-docs
+Swagger configuration is defined in src/docs/swagger.js. You can use it to test all API endpoints directly in the browser
+
+
+# 🧱 Architecture Overview
+
+🔌 Core Components
+RateLimiter Service
+Implements sliding window algorithm with Redis sorted sets.
+Rate Limit Middleware
+Express middleware that applies rate limits to API routes.
+Redis Client
+Manages Redis connections with auto-reconnect logic.
+Logger
+Outputs structured logs (JSON format) for observability.
+Error Handler
+Catches and formats errors for client responses.
+
+# 📐 Design Principles
+
+Single Responsibility – Each module handles one concern
+Open/Closed – Easy to extend with new strategies
+Dependency Injection – Services are passed, not hardcoded
+Interface Segregation – Small, focused modules
+Separation of Concerns – Clear boundaries between logic layers
+⚡ Performance Optimizations
+
+✅ Uses Redis ZSETs for efficient O(log N) operations
+✅ Atomic operations with Redis transactions
+✅ Fail-open strategy to keep app running if Redis is down
+✅ Expired entry cleanup for optimized memory use
+✅ Efficient IP tracking using IP + timestamp logic
+
 
