@@ -95,7 +95,9 @@ Interface Segregation – Small, focused modules
 
 Separation of Concerns – Clear boundaries between logic layers
 
-⚡ Performance Optimizations
+
+
+# ⚡ Performance Optimizations
 
 ✅ Uses Redis ZSETs for efficient O(log N) operations
 
