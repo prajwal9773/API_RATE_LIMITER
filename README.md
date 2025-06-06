@@ -65,6 +65,9 @@ Swagger UI available at:
 GET /api-docs
 Swagger configuration is defined in src/docs/swagger.js. You can use it to test all API endpoints directly in the browser
 
+![Test](Test.png)
+
+
 
 # 🧱 Architecture Overview
 
@@ -83,16 +86,25 @@ Catches and formats errors for client responses.
 # 📐 Design Principles
 
 Single Responsibility – Each module handles one concern
+
 Open/Closed – Easy to extend with new strategies
+
 Dependency Injection – Services are passed, not hardcoded
+
 Interface Segregation – Small, focused modules
+
 Separation of Concerns – Clear boundaries between logic layers
+
 ⚡ Performance Optimizations
 
 ✅ Uses Redis ZSETs for efficient O(log N) operations
+
 ✅ Atomic operations with Redis transactions
+
 ✅ Fail-open strategy to keep app running if Redis is down
+
 ✅ Expired entry cleanup for optimized memory use
+
 ✅ Efficient IP tracking using IP + timestamp logic
 
 
